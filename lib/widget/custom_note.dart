@@ -12,6 +12,7 @@ class CustomNote extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           ListTile(
+            contentPadding: EdgeInsets.only(left: 16,top: 12,bottom: 12,right: 0),
             title: Text(
               'Flutter tips',
               style: TextStyle(fontSize: 28, color: Colors.black ,fontWeight: FontWeight.bold),
@@ -23,7 +24,7 @@ class CustomNote extends StatelessWidget {
             trailing: IconButton(onPressed: () {}, icon: Icon(Icons.delete,size: 24,color: Colors.black,)),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 12),
             child: Text('creat At 4/12/2026 2:55 pm',style: TextStyle(color:Colors.black.withOpacity(.3) ),),
           ),
         ],
