@@ -11,7 +11,7 @@ class CustomBodyNoteView extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 50),
-          CustomAppbarNoteView(),
+          CustomAppbarNoteView(title: 'Note',icon: Icons.search,),
           Expanded(child: CustomListview()),
         ],
       ),
