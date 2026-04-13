@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomAddBotton extends StatelessWidget {
+  CustomAddBotton({this.ontap});
+  void Function()? ontap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        
-      },
+      onTap: ontap,
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 55,
