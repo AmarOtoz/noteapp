@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:noteapp/cubits/notes/notes_states.dart';
 import 'package:noteapp/widget/custom_add_botton.dart';
 import 'package:noteapp/widget/custom_text_field.dart';
 
-class CustomAddNote extends StatefulWidget {
+class CustomAddNote extends StatelessWidget {
   @override
-  State<CustomAddNote> createState() => _CustomAddNoteState();
+  Widget build(BuildContext context) {
+    return BlocConsumer(
+      listener: (context, state) {
+        if (state is NoteSuccess) {
+          Navigator.pop(context);
+        } else if (state is NoteFailuer) {
+          
+        }
+      },
+      builder: (context, state) {
+        return  ModalProgressHUD(
+          inAsyncCall: state is NoteFailuer ? true : false,
+          child: AddNoteSheet());
+      },
+    );
+  }
 }
 
-class _CustomAddNoteState extends State<CustomAddNote> {
+class AddNoteSheet extends StatelessWidget {
   GlobalKey<FormState> fromkey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title;
@@ -44,7 +62,6 @@ class _CustomAddNoteState extends State<CustomAddNote> {
                       fromkey.currentState!.save();
                     } else {
                       autovalidateMode = AutovalidateMode.always;
-                      setState(() {});
                     }
                   },
                 ),
